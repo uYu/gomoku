@@ -41,8 +41,12 @@ Hints remain full-strength 100 at the hard budget. Clear TT when stepping down
 from a stronger setting so hints cannot influence weaker turns. Native analysis,
 opening preparation, deterministic differential tests and model benchmarks use
 fullStrength explicitly to preserve full-strength comparison conditions.
-Keep the research weights in .build. The bridge works in
-Vite dev/preview and requires the native build; it is not a static-host endpoint.
+Keep the research weights in .build. Vite dev/preview retains the trial bridge.
+Docker preparation now uses server/production.ts and the shared beginner-service
+with a read-only private model mount; VITE_BEGINNER_API=1 enables scratch easy
+on the normal production URL. It still requires the native build and private
+weights, and is not a pure static-host endpoint. Prepare only the 3 inference
+weights/configs with scripts/prepare-deployment-models.py, never entire datasets.
 Live trial server: 127.0.0.1:5183. Preserve its user game; do not reset it for QA.
 This trial is complete: both models at zero search, scratch lost 0/0/16 raw
 and scored 1/0/15 with the same immediate-threat guard on both sides. In raw
@@ -159,3 +163,43 @@ Replay before the foul removes the explanation; returning restores it.
 
 Keep the sidebar focused on players/results and move history. The filler
 “棋间一隅” card and visible engine search statistics were removed by user request.
+
+## Deployed boardgame hall and server constraints
+
+The user explicitly authorized deployment to 162.14.123.217 on 2026-10-29.
+LATEST CONSTRAINT: never modify Homepage, its container/config or port 80.
+The boardgame gateway listens separately on 8210. All old game ports remain.
+Homepage container ID/start time and compose/services/settings SHA-256 were
+compared before/after deployment and match exactly.
+
+Live hall: http://162.14.123.217:8210/boardgame/
+Gomoku: /boardgame/gomoku/ on that origin, plus original-style direct port 8209.
+Othello URL spelling is /boardgame/othello/, forwarding to the existing 8207.
+The five-stone game's brand, Home and main-menu controls must return to its
+own menu. The user explicitly removed the extra return-to-hall navigation.
+
+Deployment directory: /root/app/gomoku. Containers: gomoku-gomoku-1 and
+boardgame-gateway. Existing game containers have not been recreated or edited.
+Gateway/Compose and operational details are under deploy/. Do not integrate
+cards into Homepage or move it to 8300; those former plans were revoked.
+Use the IP directly, no domain registration.
+
+The server's Docker registry proxy is unavailable; do not modify global proxy
+settings or restart Docker. The deployed image was built with the cached
+Emscripten image and deploy/Dockerfile.prebuilt. The build needs x86 SSE (Mix10
+cannot compile purely scalar); runtime is scratch plus Node and required libs,
+not the full builder image. Private scratch weights remain read-only in
+.build/runtime-models, excluded from Git, static assets and source downloads.
+
+Hall sources: public/boardgame. Category/search filters, real game links,
+optional last-opened link, responsive layout and accessible controls are present.
+Modern Art and Heaven & Ale have root-relative URLs in their existing bundles;
+server/legacy-proxy.ts rewrites only new-path HTML/JS/CSS responses and scopes
+replay API/image/Worker requests, leaving the old ports' original bytes intact.
+The old Othello /api/native/health returns 404; the new compatibility route
+preserves that status. Its existing browser AI remains the production path.
+
+scripts/verify-deployment.py checks all 9 new routes and old ports, static and
+Worker resources, policy zero-search/block-four/foul masks, replay APIs and
+private-file isolation. Remote evidence is saved under .build; do not publish
+research datasets or private model artifacts as part of deployment reports.

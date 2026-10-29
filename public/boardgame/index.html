@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3eb"><meta name="description" content="桌边，你的桌游小馆。挑一款游戏，坐下来，玩一会儿。">
+  <title>桌边 · 桌游小馆</title>
+  <link rel="icon" href="./mark.svg" type="image/svg+xml"><link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="header"><a class="brand" href="./" aria-label="桌边，桌游大厅"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11"/><path d="M14 3v34M26 3v34M3 14h34M3 26h34"/><circle cx="14" cy="14" r="5"/><circle cx="26" cy="26" r="5"/></svg><span>桌边<small>THE TABLE</small></span></a><a class="header-link" href="#games">游戏收藏 <span aria-hidden="true">↗</span></a></header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy"><p class="eyebrow"><i></i> 一张桌子，无数种好时光</p><h1 id="hero-title">好游戏，<br>都在<em>这一桌。</em></h1><p class="hero-intro">一个人琢磨，或和朋友过招。<br>挑一款喜欢的，坐下来，玩一会儿。</p><a class="hero-cta" href="#games">挑一款游戏 <span aria-hidden="true">↓</span></a><a class="last-game" id="last-game" hidden></a></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-label">留一点时间，给下一手。</div><div class="art-board"><div class="art-grid"></div><i class="disc black d1"></i><i class="disc white d2"></i><i class="disc black d3"></i><i class="disc white d4"></i><i class="disc black d5"></i><i class="disc white d6"></i><i class="disc black d7"></i><i class="disc white d8"></i><i class="disc black d9"></i></div><div class="art-ticket"><span>今日宜</span><b>好好玩一局</b><small>MAKE ROOM FOR PLAY.</small></div><div class="art-die"><i></i><i></i><i></i><i></i><i></i></div></div>
+      </section>
+      <section class="collection" id="games" aria-labelledby="collection-title">
+        <div class="collection-heading"><div><p class="eyebrow">YOUR LITTLE GAME COLLECTION</p><h2 id="collection-title">今天，玩点什么？</h2></div><p class="collection-note">熟悉的桌游，随时开一局。</p></div>
+        <div class="toolbar"><div class="filters" role="group" aria-label="游戏分类"><button type="button" class="active" data-filter="all" aria-pressed="true">全部游戏 <small>9</small></button><button type="button" data-filter="chess" aria-pressed="false">棋类对弈</button><button type="button" data-filter="table" aria-pressed="false">策略桌游</button><button type="button" data-filter="tool" aria-pressed="false">桌边工具</button></div><label class="search"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="m12 12 5 5"/></svg><input id="search" type="search" placeholder="找一款游戏" aria-label="搜索游戏" autocomplete="off"></label></div>
+        <p class="sr-only" id="results" role="status" aria-live="polite"></p><div class="game-grid" id="game-grid"></div><div class="empty" id="empty" hidden><span aria-hidden="true">◇</span><h3>这一桌还没有找到它</h3><p>换个关键词，或者看看全部游戏。</p><button type="button" id="reset">查看全部游戏</button></div><noscript><p>请开启 JavaScript 来查看游戏。你也可以直接<a href="/boardgame/gomoku/">开始五子棋</a>。</p></noscript>
+      </section>
+    </main>
+    <footer><span>落子有声，相聚有时。</span><span>桌边 · 让好时光再多一局</span><a href="#hero-title">回到顶部 ↑</a></footer>
+  </div>
+</body>
+</html>

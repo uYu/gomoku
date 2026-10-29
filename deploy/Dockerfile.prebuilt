@@ -1,0 +1,28 @@
+# Offline fallback: use the server's already cached build image; no daemon proxy changes.
+ARG BUILD_IMAGE=swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/emscripten/emsdk:latest
+FROM ${BUILD_IMAGE} AS native
+WORKDIR /app
+COPY CMakeLists.txt ./
+COPY cpp ./cpp
+COPY third_party/rapfi ./third_party/rapfi
+RUN cmake -S . -B .build/native -DCMAKE_BUILD_TYPE=Release -DNO_MULTI_THREADING=ON -DUSE_SSE=ON -DUSE_AVX2=OFF -DUSE_AVX512=OFF -DUSE_BMI2=OFF -DUSE_VNNI=OFF -DUSE_NEON=OFF -DUSE_NEON_DOTPROD=OFF \
+    && cmake --build .build/native --target rapfi -j 2
+COPY deploy/runtime-rootfs.py /tmp/runtime-rootfs.py
+RUN python3 /tmp/runtime-rootfs.py
+
+FROM scratch AS production
+COPY --from=native /runtime/ /
+WORKDIR /app
+ENV NODE_ENV=production PORT=8080 GOMOKU_MODELS_DIR=/app/private HOME=/tmp PATH=/usr/local/bin
+COPY package.json ./
+COPY dist ./dist
+COPY --from=native /app/.build/native/bin/pbrain-rapfi ./.build/native/bin/pbrain-rapfi
+COPY server ./server
+COPY scripts/native-client.ts scripts/zero-policy.ts scripts/rules-client.ts ./scripts/
+COPY src/game ./src/game
+COPY public/engine/rules.js public/engine/rules.wasm ./public/engine/
+COPY models/rapfi ./models/rapfi
+USER 1000:1000
+EXPOSE 8080
+HEALTHCHECK --interval=30s --start-period=15s --timeout=5s CMD ["/usr/local/bin/node", "-e", "fetch('http://127.0.0.1:8080/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+CMD ["/usr/local/bin/node", "--experimental-strip-types", "server/production.ts"]

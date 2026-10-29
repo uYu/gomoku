@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 5178",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "start": "node --experimental-strip-types server/production.ts",
+    "test:server": "node --experimental-strip-types --test tests/server/*.test.ts",
     "build:native": "sh scripts/build-native.sh",
     "build:wasm": "sh scripts/build-wasm.sh",
     "test:native": "node --experimental-strip-types --test tests/native/*.test.ts",

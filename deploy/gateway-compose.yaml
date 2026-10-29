@@ -1,0 +1,9 @@
+# Standalone port 8210; no changes to Homepage or its port 80.
+services:
+  boardgame-gateway:
+    image: caddy:2
+    container_name: boardgame-gateway
+    network_mode: host
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    restart: unless-stopped

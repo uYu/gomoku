@@ -33,6 +33,9 @@ export class NativeRapfi {
     });
     this.child.stderr.setEncoding('utf8');
     this.child.stderr.on('data', text => this.fail(new Error(text.slice(0, 500))));
+    // A stop signal can close the child's pipe before close() sends END.
+    // Reject an active request, or ignore the expected shutdown-time error.
+    this.child.stdin.on('error', error => this.fail(error));
     this.child.on('error', error => this.fail(error));
     this.child.on('exit', code => this.fail(new Error(`Rapfi exited (${code})`)));
     this.ready = this.waitFor(line => line === 'OK'); this.send('START 15');

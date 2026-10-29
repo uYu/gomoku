@@ -1,0 +1,42 @@
+# Dedicated boardgame gateway. Keep Homepage and its port 80 unchanged.
+{
+  admin off
+}
+(game) {
+  redir /boardgame/{args[0]} /boardgame/{args[0]}/ 308
+  handle_path /boardgame/{args[0]}/* {
+    reverse_proxy 127.0.0.1:{args[1]}
+  }
+}
+:8210 {
+  encode zstd gzip
+  redir /boardgame /boardgame/ 308
+  import game othello 8207
+  import game gomoku 8209
+  import game scout 8203
+  # These two original bundles use root-relative asset/API URLs. Their adapter
+  # scopes URLs to the game while leaving original port access unchanged.
+  redir /boardgame/heaven-ale /boardgame/heaven-ale/ 308
+  redir /boardgame/modern-art /boardgame/modern-art/ 308
+  handle /boardgame/heaven-ale/* {
+    reverse_proxy 127.0.0.1:8209
+  }
+  handle /boardgame/modern-art/* {
+    reverse_proxy 127.0.0.1:8209
+  }
+  import game jaipur 8204
+  import game patchwork 8205
+  import game carnegie 8206
+  import game ra 8208
+  handle /boardgame/* {
+    reverse_proxy 127.0.0.1:8209
+  }
+  # Compatibility for the existing Othello client with root-relative native API URLs.
+  handle /api/native/* {
+    reverse_proxy 127.0.0.1:8207
+  }
+  redir / /boardgame/ 302
+  handle {
+    respond "Not Found" 404
+  }
+}

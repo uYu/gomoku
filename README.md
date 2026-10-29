@@ -83,9 +83,18 @@ STRENGTH=95、最多 2200ms，启用上游候选随机选招和深度限制；�
 npm run build
 # 将 dist/ 放入静态服务器，支持子目录部署
 
+python3 scripts/prepare-deployment-models.py
 docker compose up --build
-# http://localhost:8208/
+# http://localhost:8209/boardgame/
 ```
 
 引擎与本发行版遵循 GPL-3.0-or-later，权重和数据保留各自许可。
 静态站点随附对应引擎源码下载，见 [第三方来源](THIRD_PARTY_NOTICES.md)。
+
+桌游大厅位于 `public/boardgame/`，提供分类、搜索及游戏入口。计划使用
+`/boardgame/`、`/boardgame/othello/` 和 `/boardgame/gomoku/` 等路径；
+Docker 自训入门服务、私有模型挂载和独立网关配置见
+[部署说明](deploy/DEPLOYMENT.md)。
+
+已部署入口：http://162.14.123.217:8210/boardgame/ 。原 Homepage 和 80 端口
+保持不变，原有桌游端口继续可用。五子棋“首页/主菜单”仍返回它自己的开始页。

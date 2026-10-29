@@ -1,6 +1,14 @@
 services:
   gomoku:
+    image: gomoku:latest
     build: .
     ports:
-      - "127.0.0.1:8208:80"
+      - "${GOMOKU_BIND:-127.0.0.1}:${GOMOKU_PORT:-8209}:8080"
+    volumes:
+      - "${GOMOKU_MODELS_DIR:-./.build/runtime-models}:/app/private:ro"
+    environment:
+      GOMOKU_LEGACY_HOST: host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    init: true
     restart: unless-stopped

@@ -7,6 +7,17 @@ import {play} from '../../src/game/engine.ts';
 import {existsSync} from 'node:fs';
 import {resolve} from 'node:path';
 
+test('a native input-pipe failure rejects the request without crashing the server',async()=>{
+  const native=new NativeRapfi();
+  try{
+    await native.ready;
+    const waiting=native.waitFor(line=>line==='unreachable pipe-error probe');
+    const rejected=assert.rejects(waiting,/input pipe closed/);
+    native.child.stdin.destroy(new Error('input pipe closed'));
+    await rejected;
+  }finally{await native.close();}
+});
+
 test('native and Wasm agree at a fixed node budget in all three rules', async () => {
   const native = new NativeRapfi();
   const wasm = await wasmSession();
