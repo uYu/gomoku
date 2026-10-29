@@ -1,0 +1,33 @@
+{
+  "rapfi_revision": "1387d11312190ec66665d361ff07a7c70221b78a",
+  "networks_revision": "7eeb19b55219a48138756293f92211a1539bab4d",
+  "dataset_revision": "5cf594efdcddcba688965e3bdcab37f2a89d714b",
+  "engine_source_sha256": "88efb87f11b95eb178e0d10b8f4f86f9dc9162e638c948c9fb7580669f588061",
+  "files": {
+    "models/rapfi/LICENSE-CC0": "084bc2aebf95358b73255bd38213fdb27bfd19c6819ae7c1d0679400cf01cea1",
+    "models/rapfi/classical.bin": "8d4f518c58f9c7abe017de383a87d2d7506c62936ea5188004b7eb1780b99393",
+    "models/rapfi/classical.toml": "b6b10fcb2fc189bd88de44c0349d2d4ef5540a8a825f9c9c98ee52580db04cc2",
+    "models/rapfi/config.toml": "f74f0293846d822e1bafab8b678efb52743b3d78f907a4ded1b74678f27a27e3",
+    "models/rapfi/mcts.toml": "2fc6250c59876e2308ffd8f0e805503fc417821b648584ce69e940630aff7817",
+    "models/rapfi/mix9svqfreestyle_bsmix.bin.lz4": "6bc0d1b0ff8e1d857f7f412923cd458f38f1a435087c91ae71fec3676c23ef62",
+    "models/rapfi/mix9svqrenju_bs15_black.bin.lz4": "7ab8c974c30da07717ce6a504616a62ac8c981500503f0ced0fadefd3f46c5ec",
+    "models/rapfi/mix9svqrenju_bs15_white.bin.lz4": "a31f318518d3b5630489054d9eb013fd5353c553999640c2bcfd8d95e6fe4e4e",
+    "models/rapfi/mix9svqstandard_bs15.bin.lz4": "84334f5db96f45b3e36ebdde06d2259d878ae1eb347b7cf74574ac908b8d9e7d",
+    "models/rapfi/trained.bin": "ab4dfa8ff037a9d7668eff2242f8390e2ceb0d804d2c5e1fda2feb3ea50cc6a3",
+    "models/rapfi/trained.toml": "b7e3e84f308b6d60a79be77599907fc19728a1cf24501bbbabe9d7ae3fcbb66f",
+    "models/rapfi/training-parent.bin": "63e09d76174d510674480e92349487e5ee72e989caa918733083a60e8090a013",
+    "models/rapfi/training-parent.toml": "81d4a297cd8a4163d5a60c5376ecb1fc070791e23aa8285e579e8c89b064f888",
+    "data/raw/winepy-games.json": "b2f49e473b6e3f5714b0b194aacaa4d346a6c0200e58a3452197636ed2b55353",
+    "data/raw/DATASET_CARD.md": "43896135906fcc5cd431fe4cce6ef57546f215a48ef851ff1144972681cb3861",
+    "public/engine/rapfi.js": "86cacb895550ea6e35efe6d2ef212a13f58079c8e092038c9b8d64abc6e77411",
+    "public/engine/rapfi.wasm": "5ccb727b774de9fcc2c767a9e9d96d54f93f73c45de735cb709597aa39088148",
+    "public/engine/rapfi.data": "768275fc0d266546eea10879f37265de6c7c0ab76bb199f4054f538241264c7d",
+    "public/engine/source.tar.gz": "b8f0deb8b281867da0bc99c5228a6d5865d2b2f7017d3d9d5917b1e35b5dae58",
+    "public/engine/rules.js": "39790f29ffe336a1818dc4e1230434c8be107fb91d70eecd93f11868ab3958d1",
+    "public/engine/rules.wasm": "3c98c85f1b18241dabd8e61c9b10d8f9516f4fc42aa6e56ccf5e606c5d3fb310",
+    "cpp/rules.cpp": "5d3c340c9f735c62dcc597a8c6a382e3410545944b54394f6fa29a7f16637d9d",
+    "cpp/dataset.cpp": "f1a1dccc2954a827b23de3001119c89253fc42f7be00f677286aaa66f0e0bdf5",
+    "CMakeLists.txt": "69e4d4afe7de284c779080ca89456d8a5afcb5a4994e029a94844c9192bbd7bb",
+    "scripts/build-rules.sh": "0ba8e630c8555d2c9b5261f71c62aaae534098e3e841efa818d8d1384dd57411"
+  }
+}

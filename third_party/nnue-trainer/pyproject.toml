@@ -1,0 +1,9 @@
+[tool.pyright]
+exclude = [
+    "**/__pycache__",
+    "configs",
+    "data",
+    "run_dirs",
+]
+[tool.black]
+line-length = 109

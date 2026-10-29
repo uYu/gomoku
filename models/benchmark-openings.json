@@ -1,0 +1,202 @@
+{
+  "provenance": "Held-out WinePy positions plus nine fixed Rapfi Swap2 seed shapes (played here without swap); sixth move balanced with Rapfi YXBALANCEONE, then checked by 150ms NNUE search; |eval|<=120; fixed before candidate comparison.",
+  "reference": "Rapfi 1387d11312190ec66665d361ff07a7c70221b78a, mix9svq",
+  "rule": "freestyle",
+  "openings": [
+    {
+      "moves": [
+        112,
+        98,
+        114,
+        128,
+        113,
+        111
+      ],
+      "score": 0,
+      "depth": 17,
+      "sourceGame": 3
+    },
+    {
+      "moves": [
+        112,
+        128,
+        82,
+        127,
+        114,
+        129
+      ],
+      "score": 84,
+      "depth": 17,
+      "sourceGame": 11
+    },
+    {
+      "moves": [
+        112,
+        126,
+        81,
+        142,
+        110,
+        111
+      ],
+      "score": 0,
+      "depth": 16,
+      "sourceGame": 23
+    },
+    {
+      "moves": [
+        112,
+        113,
+        125,
+        97,
+        80,
+        81
+      ],
+      "score": 30,
+      "depth": 17,
+      "sourceGame": 29
+    },
+    {
+      "moves": [
+        112,
+        113,
+        81,
+        127,
+        84,
+        99
+      ],
+      "score": 24,
+      "depth": 18,
+      "sourceGame": 34
+    },
+    {
+      "moves": [
+        112,
+        113,
+        141,
+        97,
+        144,
+        129
+      ],
+      "score": 51,
+      "depth": 17,
+      "sourceGame": 39
+    },
+    {
+      "moves": [
+        111,
+        66,
+        34,
+        95,
+        80,
+        96
+      ],
+      "score": 21,
+      "depth": 15,
+      "sourceGame": 55
+    },
+    {
+      "moves": [
+        48,
+        80,
+        96,
+        82,
+        67,
+        66
+      ],
+      "score": 2,
+      "depth": 15,
+      "sourceGame": 56
+    },
+    {
+      "moves": [
+        33,
+        65,
+        79,
+        95,
+        110,
+        81
+      ],
+      "score": 3,
+      "depth": 16,
+      "sourceGame": 57
+    },
+    {
+      "moves": [
+        35,
+        76,
+        91,
+        109,
+        93,
+        110
+      ],
+      "score": 56,
+      "depth": 16,
+      "sourceGame": 58
+    },
+    {
+      "moves": [
+        83,
+        125,
+        111,
+        124,
+        127,
+        140
+      ],
+      "score": 103,
+      "depth": 17,
+      "sourceGame": 59
+    },
+    {
+      "moves": [
+        80,
+        128,
+        112,
+        129,
+        127,
+        143
+      ],
+      "score": 42,
+      "depth": 17,
+      "sourceGame": 60
+    },
+    {
+      "moves": [
+        193,
+        148,
+        190,
+        160,
+        173,
+        174
+      ],
+      "score": -8,
+      "depth": 15,
+      "sourceGame": 61
+    },
+    {
+      "moves": [
+        116,
+        100,
+        88,
+        130,
+        85,
+        99
+      ],
+      "score": 67,
+      "depth": 17,
+      "sourceGame": 62
+    },
+    {
+      "moves": [
+        108,
+        121,
+        60,
+        124,
+        139,
+        123
+      ],
+      "score": 8,
+      "depth": 15,
+      "sourceGame": 63
+    }
+  ]
+}

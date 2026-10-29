@@ -1,0 +1,43 @@
+{
+  "model": "WinePy policy v1",
+  "parent": "Rapfi classical220723",
+  "epochs": 20,
+  "seed": 20261029,
+  "trained_sha256": "311457605a4f03de18792a7fa17b9503258942d8ba2270f3c193e9341dc53e0e",
+  "test_policy_loss_before": 1.77130212963901,
+  "test_policy_loss_after": 1.70235759573504,
+  "dataset": {
+    "source": "https://huggingface.co/datasets/Karesis/Gomoku",
+    "revision": "5cf594efdcddcba688965e3bdcab37f2a89d714b",
+    "license": "MIT (publisher dataset card)",
+    "raw_sha256": "b2f49e473b6e3f5714b0b194aacaa4d346a6c0200e58a3452197636ed2b55353",
+    "seed": 20261029,
+    "input_games": 875,
+    "accepted_games": 543,
+    "rejected": {
+      "D4-duplicate game": 328,
+      "duplicate move": 4
+    },
+    "minimum_ply": 4,
+    "rule": "freestyle",
+    "deduplication": "full game under all eight D4 symmetries; split only after deduplication",
+    "splits": {
+      "train": {
+        "games": 434,
+        "positions": 12636,
+        "sha256": "611e2e1c2012c4a8de9b6ce37f9bd44b81b4d870181ee8dd5d0f22a7617d699e"
+      },
+      "validation": {
+        "games": 54,
+        "positions": 1487,
+        "sha256": "5b049fe79070071c6d3dd15aa8f535a73608a50ac92a7549c46f23e58b358ce4"
+      },
+      "test": {
+        "games": 55,
+        "positions": 1810,
+        "sha256": "34b98ae386df6735b551b626098e3709f6896bceae458480868c61191dd4d7cb"
+      }
+    }
+  },
+  "recipe": "Same policy-only settings as scripts/train-policy.py, 20 epochs at constant learning rate 0.001, checkpoint every 2 epochs."
+}

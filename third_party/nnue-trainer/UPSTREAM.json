@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/dotb1ue/pytorch-nnue-trainer",
+  "revision": "3641196344856432c599d1c59e314e345dc7d1dd",
+  "source_archive_sha256": "bafd574899afe1e97631dfc6e6fdf8e6acd195c0a91b76481b877b2d5aa86673",
+  "model_code_modified": false,
+  "runtime_adapters": [
+    "scripts/nnue_cpu.py: deterministic tiled CPU L2 assignment",
+    "scripts/nnue_export.py: tested vectorized 10-bit packing for format preflight"
+  ],
+  "use": "Personal local research; not included in static website assets."
+}

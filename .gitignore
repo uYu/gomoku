@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.build/
+.DS_Store
+third_party/rapfi/Networks/
+__pycache__/
+*.pyc
+
+third_party/nnue-trainer/**/build/
+**/*.egg-info/

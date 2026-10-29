@@ -1,0 +1,85 @@
+# An example config of training a mix9nnue model with mixed dataset of freestyle 15 & 20
+
+# Path to save running logs and checkpoints
+# It is recommended to briefly record the config of the network in the rundir name
+rundir: run_dirs/mix9/basicns128m64f32p64v32d-f15_20
+
+# Dataset configs
+
+# We will use "multi" dataset type to load multiple datasets (possibly with different sub-dataset types)
+dataset_type: multi
+
+dataset_args:
+  # The dataset_dict is a list of configs for sub-datasets, each item's key is the 
+  # dataset's name and its value is a dict of the sub-dataset's config.
+  # For example, if you have a raw katago dataset for freestyle 15 in data/f15,
+  # and a processed katago dataset for freestyle 20 in data/f20, you can write:
+  dataset_dict:
+    f15:
+      dataset_type: katago_numpy
+      data_paths:
+      - data/gomoku/f15
+      sample_rate: 1.0
+    f20:
+      dataset_type: iterative_processed_katago_numpy
+      data_paths:
+      - data/gomoku/f20
+      sample_rate: 1.0
+
+  sample_rate: 1.0
+  apply_symmetry: true
+  sync_length: true  # Setting this to true will sample the same amount of data for each sub-dataset
+
+dataloader_args:
+  # Ensure the same board size for entries in the same batch
+  batch_by_boardsize: true
+
+
+# Model configs
+
+model_type: mix9
+model_args:
+  dim_middle: 128
+  dim_feature: 64
+  dim_policy: 32
+  dim_value: 64
+  dim_dwconv: 32
+
+
+# Loss configs
+
+loss_args:
+  policy_reg_lambda: 0.001
+
+
+# Training configs
+
+batch_size: 2048
+iterations: 2000000
+save_interval: 50000
+learning_rate: 0.001
+weight_decay: 1.0e-7
+clip_grad_norm: 1.0
+
+lr_scheduler_type: step
+lr_scheduler_args:
+  step_size: 50000
+  step_gamma: 0.9
+
+
+# Distillation configs
+# If you have a pretrained tracher model, you can specify the distillation configs here
+# The distillation will be applied to the student model during training
+
+# Setup kd_model_type to enable distillation
+# kd_model_type: resnet
+kd_model_args:
+  num_blocks: 10
+  dim_feature: 128
+  head_type: v0
+  input_type: basic-nostm
+kd_checkpoint: <your path to the teacher model checkpoint>
+# The temperature of the distillation
+kd_T: 1.0
+# The weight of distillation loss (final loss = (1 - kd_alpha) * raw_data_loss + kd_alpha * distillation_loss)
+kd_alpha: 0.8
